@@ -1,5 +1,7 @@
+
 var url = require('url');
 var fs = require('fs');
+var http = require("http");
 
 function renderHTML(path,response){
     fs.readFile(path ,null ,function(error, data){
@@ -20,10 +22,10 @@ module.exports = {
 
         switch(path){
             case '/':
-                renderHTML('./html/index.html');
+                renderHTML('./html/index.html',response);
                 break;
             case '/login':
-                renderHTML('./html/login.html');
+                renderHTML('./html/login.html',response);
                 break;
             default:
                 response.writeHead(404);
